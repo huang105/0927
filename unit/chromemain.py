@@ -1,7 +1,7 @@
 #coding:utf-8
 import unittest
 from utlis import urlutlis,chroemutlis
-from main.control import chromecontrol
+from loginse.control import chromecontrol
 
 class ChromeMain(unittest.TestCase):
 
