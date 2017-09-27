@@ -25,7 +25,7 @@ class loginCon(object):
         # 查找控件进行断言
         message = self.driver.FindClassname(cls).text
         self1.assertEqual(message, expects)
-
+#hhhh
         pass
     # 断言tilte
     def LoginTitle(self, self1, expects):
