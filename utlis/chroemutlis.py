@@ -24,7 +24,8 @@ from  enum import Enum
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+#导入浮动的包
+from  selenium.webdriver.common.action_chains import ActionChains
 
 # 定义一个类 继承 object ：
 class startChrome(object):
@@ -34,7 +35,7 @@ class startChrome(object):
         # 在 Java中实例化需要使用的关键字叫 new , 在python 中不需要使用关键字,直接类型()
         pass
 
-    def chrome(self, url):
+    def chromeStart(self, url):
         # 打开浏览器
         self.driver = webdriver.Chrome()
         # 最大化
@@ -47,6 +48,7 @@ class startChrome(object):
 
     # 关闭浏览器的方法
     def closeChrome(self):
+        self.TimeSleep(ENUM.TWO_TIME)
         self.driver.quit()
         pass
 
@@ -224,68 +226,64 @@ class startChrome(object):
         except  Exception:
             return self.driver.find_elements_by_partial_link_text(PARTIAL_LINK_TEXT)
             pass
-
-
-# 定义八种控件查找方式6
-def FindXPATHs(self, XPATH):
-    try:
-        # 查找内容
-        ids = (By.XPATH, XPATH)
-        # 设置休眠时间
-        WebDriverWait(self.driver, ENUM.TWENTY_TIME, ENUM.ZONE_TIME).until(EC.presence_of_element_located(ids))
-        return self.driver.find_elements_by_xpath(XPATH)
-    except  Exception:
-        return self.driver.find_elements_by_xpath(XPATH)
-        pass
-
-
-# 定义八种控件查找方式7
-def FindCSS_SELECTORs(self, CSS_SELECTOR):
-    try:
-        # 查找内容
-        ids = (By.CSS_SELECTOR, CSS_SELECTOR)
-        # 设置休眠时间
-        WebDriverWait(self.driver, ENUM.TWENTY_TIME, ENUM.ZONE_TIME).until(EC.presence_of_element_located(ids))
-        return self.driver.find_elements_by_css_selector(CSS_SELECTOR)
-    except  Exception:
-        return self.driver.find_elements_by_css_selector(CSS_SELECTOR)
-        pass
-
-
-# 定义八种控件查找方式8
-def FindTAG_NAMEs(self, TAG_NAME):
-    try:
-        # 查找内容
-        ids = (By.TAG_NAME, TAG_NAME)
-        # 设置休眠时间
-        WebDriverWait(self.driver, ENUM.TWENTY_TIME, ENUM.ZONE_TIME).until(EC.presence_of_element_located(ids))
-        return self.driver.find_elements_by_tag_name(TAG_NAME)
-    except  Exception:
-        return self.driver.find_elements_by_tag_name(TAG_NAME)
-        pass
-
-
+    # 定义八种控件查找方式6
+    def FindXPATHs(self, XPATH):
+        try:
+            # 查找内容
+            ids = (By.XPATH, XPATH)
+            # 设置休眠时间
+            WebDriverWait(self.driver, ENUM.TWENTY_TIME, ENUM.ZONE_TIME).until(EC.presence_of_element_located(ids))
+            return self.driver.find_elements_by_xpath(XPATH)
+        except  Exception:
+            return self.driver.find_elements_by_xpath(XPATH)
+            pass
+    # 定义八种控件查找方式7
+    def FindCSS_SELECTORs(self, CSS_SELECTOR):
+        try:
+            # 查找内容
+            ids = (By.CSS_SELECTOR, CSS_SELECTOR)
+            # 设置休眠时间
+            WebDriverWait(self.driver, ENUM.TWENTY_TIME, ENUM.ZONE_TIME).until(EC.presence_of_element_located(ids))
+            return self.driver.find_elements_by_css_selector(CSS_SELECTOR)
+        except  Exception:
+            return self.driver.find_elements_by_css_selector(CSS_SELECTOR)
+            pass
+    # 定义八种控件查找方式8
+    def FindTAG_NAMEs(self, TAG_NAME):
+        try:
+            # 查找内容
+            ids = (By.TAG_NAME, TAG_NAME)
+            # 设置休眠时间
+            WebDriverWait(self.driver, ENUM.TWENTY_TIME, ENUM.ZONE_TIME).until(EC.presence_of_element_located(ids))
+            return self.driver.find_elements_by_tag_name(TAG_NAME)
+        except  Exception:
+            return self.driver.find_elements_by_tag_name(TAG_NAME)
+            pass
     # 点击class方法
+    def click_class(self, cls):
+        self.FindClassname(cls).click()
+        self.TimeSleep(ENUM.TWO_TIME)
+        pass
+    # 点击class方法
+    def click_id(self, cls):
+        self.FindId(cls).click()
+        self.TimeSleep(ENUM.TWO_TIME)
+        pass
+    # 获取title的方法
+    def getTilet(self):
+        self.TimeSleep(ENUM.TWO_TIME)
+        return self.driver.title
+        pass
+    #悬浮的方法
+    def ActionMove(self):
+        #查找控件
+        dorpdown = self.FindClassname("dorpdown")
+        ActionChains(self.driver).move_to_element(dorpdown).perform()
+        self.TimeSleep(ENUM.TWO_TIME)
 
 
-def click_class(self, cls):
-    self.FindClassname(cls).click()
-    self.TimeSleep(ENUM.TWO_TIME)
-    pass
+        pass
 
-
-# 点击class方法
-def click_id(self, cls):
-    self.FindId(cls).click()
-    self.TimeSleep(ENUM.TWO_TIME)
-    pass
-
-
-# 获取title的方法
-def getTilet(self):
-    self.TimeSleep(ENUM.TWO_TIME)
-    return self.driver.title
-    pass
 
 
 

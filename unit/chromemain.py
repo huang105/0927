@@ -15,7 +15,7 @@ class ChromeMain(unittest.TestCase):
     #每一条测试用例执行之前执行的方法
     def setUp(self):
         #打开浏览器
-        self.utls.chrome(self.url.JD_LOGIN)
+        self.utls.chromeStart(self.url.JD_LOGIN)
         pass
 
     # 关闭浏览器
