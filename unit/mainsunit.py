@@ -20,14 +20,14 @@ class Mainsseaou(unittest.TestCase):
         #关闭浏览器
         self.driver.closeChrome()
         pass
-    # #输入 物件， 点击一下
-    # def test_sou_kuang(self):
-    #     self.control.Search(u"袜子")
-    #     #断言
-    #     #self.control.SesrchAssert(self,u"袜子 - 商品搜索 - 京东")
-    #     self.control.CountAssert(self,30)
-    #
-    #     pass
+    #输入 物件， 点击一下
+    def test_sou_kuang(self):
+        self.control.Search(u"袜子")
+        #断言
+        #self.control.SesrchAssert(self,u"袜子 - 商品搜索 - 京东")
+        self.control.CountAssert(self,30)
+
+        pass
     #悬浮进行断言
     def test_sou_kuang(self):
         #悬浮上去
